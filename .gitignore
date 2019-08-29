@@ -22,6 +22,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+
 #Stuff from PyPi
 /seedling.egg-info/
 /dist/
@@ -30,7 +31,7 @@ build/
 .project
 .classpath
 *.pyc
-/dokenv/
+/seedlingenv/
 /__pycache__/
 
 # C extensions

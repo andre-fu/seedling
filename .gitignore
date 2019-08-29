@@ -9,3 +9,14 @@
 /*.egg-info
 
 /seedling.egg-info/
+
+
+/seedling.egg-info/
+/dist/
+build/
+.settings/
+.project
+.classpath
+*.pyc
+/seedlingenv/
+/__pycache__/

@@ -22,6 +22,16 @@
 __pycache__/
 *.py[cod]
 *$py.class
+#Stuff from PyPi
+/dokr.egg-info/
+/dist/
+build/
+.settings/
+.project
+.classpath
+*.pyc
+/dokenv/
+/__pycache__/
 
 # C extensions
 *.so
@@ -169,15 +179,6 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-#Stuff from PyPi
-/dokr.egg-info/
-/dist/
-build/
-.settings/
-.project
-.classpath
-*.pyc
-/dokenv/
-/__pycache__/
+
 
 # End of https://www.gitignore.io/api/linux,python,windows

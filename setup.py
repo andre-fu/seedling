@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="seedling",
-    version="0.1",
+    version="0.0.1",
     author="Andre Fu",
     author_email="andrefu.af@hotmail.com",
     description="A Synthetic Biology Machine Learning package.",

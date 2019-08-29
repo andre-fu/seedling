@@ -23,7 +23,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 #Stuff from PyPi
-/dokr.egg-info/
+/seedling.egg-info/
 /dist/
 build/
 .settings/

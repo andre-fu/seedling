@@ -2,8 +2,8 @@ from typing import Callable, List
 import random
 class Optimization:
 
-    # def __init__(self):
-    #     return None
+    def __init__(self):
+        self.aa = ['A', 'R', 'N', 'D', 'C', 'Q' ,'E', 'G', 'H', 'I', 'L', 'K', 'M', 'F', 'P', 'S', 'T', 'W', 'Y', 'V']
 
     def genetic_algorithm(self, dna_sequence: str, minimize: bool, pool_size: int, fitness: Callable[[str], float]) -> str:
         """Generate a Genetic Algorithm to return the top optimized amino acid sequence
@@ -66,11 +66,13 @@ class Optimization:
                 f= False
                 break
         child_dna = list(child_dna)
-        child_dna[charpos] = aa[random.randint(0, len(changes)-1)]
+        child_dna[charpos] = self.aa[random.randint(0, len(changes)-1)]
         child_fitness = fitness(child_dna) #remove target 
         child_dna[start:stop] = parent2['dna'][start:stop]
         child_dna = ''.join(child_dna)
 
         return({'dna': child_dna, 'fitness': child_fitness})
 
-        
+    def _random_parent(self, genepool: List[dict], pop_size: int) -> dict:
+        rng = random.randint(0, pop_size -1)
+        return(genepool[rng])

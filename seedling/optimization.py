@@ -5,7 +5,7 @@ class Optimization:
     def __init__(self):
         self.aa = ['A', 'R', 'N', 'D', 'C', 'Q' ,'E', 'G', 'H', 'I', 'L', 'K', 'M', 'F', 'P', 'S', 'T', 'W', 'Y', 'V']
 
-    def genetic_algorithm(self, dna_sequence: str, minimize: bool, pool_size: int, fitness: Callable[[str], float]) -> str:
+    def genetic_algorithm(self, dna_sequence: str, minimize: bool, pool_size: int, fitness: Callable[[str], float], bad_idx: List[int]) -> str:
         """Generate a Genetic Algorithm to return the top optimized amino acid sequence
         
         Arguments:
@@ -13,11 +13,36 @@ class Optimization:
             minimize {bool} -- To Minimize - TRUE, to maximize - FALSE
             pool_size {int} -- How big the gene pool is
             fitness {Callable[[str], float]} -- Function to evaluate all amino acid sequences
+            bad_idx {List[int]} -- List of indicies to not touch
         
         Returns:
             str -- The Amino Acid sequence of the optimized sequence
         """
         
+        # #POP_SIZE = 100
+        # POP: List[int] = []
+        # i: int = 0
+        # while i < pool_size:
+        #     newDna = dna_sequence
+        #     f = True 
+        #     while f == True:
+        #         idx = random.randint(0, len(dna_sequence)-1 )
+        #         if (idx in bad_idx):
+        #             continue
+        #         else: 
+        #             break
+        #     newDna = list(newDna)
+        #     newDna[idx] = changes[random.randint(0, len(changes)-1)]
+        #     newDna = ''.join(newDna)
+        #     POP.append(newDna)
+        #     i += 1
+        # #now you have a 100 random mutations of petase
+        # genepool = []
+        # for i in range(0, len(POP)):
+        #     fit = fitness(POP[i]) 
+        #     sim = self._similarity(POP[i])
+        #     candidate = {'dna': POP[i], 'fitness': fit, 'similarity': sim}
+        #     genepool.append(candidate)
         return 'hellowlrd'
     
     def _mutate(self, parent1: dict, parent2: dict, no_mutate: List[int], fitness: Callable[[str], float]) -> dict:
@@ -59,7 +84,7 @@ class Optimization:
 
         f = True 
         while f == True:
-            charpos = random.randint(0, len(child_dna) - 1)
+            charpos: int = random.randint(0, len(child_dna) - 1)
             if (charpos in no_mutate):
                 continue
             else: 
@@ -76,3 +101,37 @@ class Optimization:
     def _random_parent(self, genepool: List[dict], pop_size: int) -> dict:
         rng = random.randint(0, pop_size -1)
         return(genepool[rng])
+    def _fitness(self, dna: dict, keys: dict):
+        """Calculates the sum of the numerical evaluation - could use your own fitness function
+        
+        Arguments:
+            dna {dict} -- dna dictionary for calculation
+            keys {dict} -- guide keys for the summation (whimely-white scale used)
+        
+        Returns:
+            float -- the summation of the numerical value of the elements for amino acids
+        """
+        sum:float = 0
+        for i in range(0, len(dna)):
+            sum += float(keys[dna[i]][1])
+        return sum
+    
+    def _similarity(seq:str, compare:str):
+        """Calculates the similarity between a seqeunce and a wild-type sequence 
+        
+        Arguments:
+            seq {str} -- the novel seqeuence to compare against 
+            compare {str} -- the wild-type sequence
+        
+        Returns:
+            float -- the percentage similarity between the sequences
+        """
+        tally:int = 0
+        for i in range(0, len(compare)):
+            if seq[i] == compare[i]:
+                tally += 1
+        return tally/len(compare) * 100
+    
+    
+    
+    
